@@ -15,12 +15,7 @@ export const cralwer = async () => {
         .filter(onlyTypeTag)
         .map((tr) => tr.children
           .filter(onlyTypeTag)
-          .map(({ children }) => (children.length > 0
-                                  ?
-                                  children[0].data == undefined
-                                  ?
-                                  '공지' : children[0].data
-                                   : '')).splice(1))
+          .map(({ children }) => (children.length > 0 ? children[0].data : '')).slice(2,5))
     
   
       const content = $('.bbs_con tbody')[0].children
@@ -32,7 +27,7 @@ export const cralwer = async () => {
   
       
       const result = data.map((v, i) => {
-        v[1] = content[i]
+        v[0] = content[i]
         return v
       }) 
   

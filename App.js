@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, ScrollView } from 'react-native';
+import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
 import { cralwer } from './crawler/code';
 global.Buffer = global.Buffer || require('buffer').Buffer
 
 export default function App() {
 
   const [data, setData] = useState();
+  const [head, setHead] = useState(['content', 'writer', 'day'])
 
   const result = async() => {
     let result = await cralwer();
-    console.log(result[0]);
     setData(result);
   }
 
@@ -19,9 +20,12 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text>
-        {data}
-      </Text>
+      <ScrollView>
+        <Table borderStyle={{borderWidth: 2, borderColor: '#c8e1ff'}} style={styles.table}>
+            <Row data={head} flexArr={[4, 1, 1.3]} style={styles.head} textStyle={styles.text}/>
+            <Rows data={data} flexArr={[4, 1, 1.3]}  style={styles.rows} textStyle={styles.text}/>
+        </Table>
+      </ScrollView>
     </View>
   );
 }
@@ -29,9 +33,20 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: '#3669CF',
   },
+  table: {
+    margin: 10,
+    marginTop: 30
+  },
+  head: {
+    height: 40,
+    backgroundColor: '#f1f8ff'
+  },
+  text: {
+    fontSize: 15
+  },
+  rows: {
+    backgroundColor: '#FFFFFF'
+  }
 });
