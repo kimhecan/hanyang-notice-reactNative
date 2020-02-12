@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
+import { WebView } from 'react-native-webview';
 import { cralwer } from './crawler/code';
 global.Buffer = global.Buffer || require('buffer').Buffer
 
 export default function App() {
 
   const [data, setData] = useState();
-  const [head, setHead] = useState(['content', 'writer', 'day'])
-  const [tail, setTail] = useState(['내용', '작성자', '날짜'])
+  const [head, setHead] = useState(['content', 'day'])
+  const [tail, setTail] = useState(['내용', '날짜'])
 
   const result = async() => {
     let result = await cralwer();
@@ -21,13 +22,17 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.notice}>공지사항</Text>
       <ScrollView>
+        <Text style={styles.notice}>공지사항</Text>
         <Table borderStyle={{borderWidth: 1.5, borderColor: '#c8e1ff'}} style={styles.table}>
-            <Row data={head} flexArr={[4, 1, 1.3]} style={styles.head} textStyle={styles.text}/>
-            <Rows data={data} flexArr={[4, 1, 1.3]}  style={styles.rows} textStyle={styles.text}/>
-            <Row data={tail} flexArr={[4, 1, 1.3]} style={styles.tail}></Row>
+            <Row data={head} flexArr={[4,1.3]} style={styles.head} textStyle={styles.text}/>
+            <Rows data={data} flexArr={[4,1.3]}  style={styles.rows} textStyle={styles.text}/>
+            <Row data={tail} flexArr={[4,1.3]} style={styles.tail}></Row>
         </Table>
+        <WebView
+        source={{uri: 'http://sw.hanyang.ac.kr/board/notice.php'}}
+        style={{margin: 0,marginTop:10 ,width: 375, height:500}}
+      />
       </ScrollView>
     </View>
   );

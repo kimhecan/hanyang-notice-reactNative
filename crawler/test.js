@@ -1,7 +1,29 @@
-const cheerio = require('cheerio-without-node-native');
 const axios = require('axios');
+const cheerio = require('cheerio');
+const puppeteer = require('puppeteer')
 
-export const cralwer = async () => {
+// let url = "https://information.hanyang.ac.kr/#/bbs/notice?offset=0&max=20&bulletinCategoryId=1,4"
+// let url2 = "http://sw.hanyang.ac.kr/board/notice.php?ptype=&page=1&code=notice"
+
+// const crawler = async() => {  
+//   try {
+//     const browser = await puppeteer.launch({ headless: false });
+//     const page = await browser.newPage();
+//     await page.goto(url);
+//     const text = await page.evaluate(() => {
+//       const data = document.querySelectorAll('.ikc-tablelist');
+//       return data
+//     })
+//     console.log(text);
+//     await page.close();
+//     await browser.close();
+//   } catch (e) {
+//     console.error(e);
+//   }
+  
+// }
+
+const cralwer = async () => {
 
   const onlyTypeTag = ({ type }) => type == 'tag'
   const uri = "http://sw.hanyang.ac.kr/board/notice.php?ptype=&page=1&code=notice"
@@ -16,7 +38,9 @@ export const cralwer = async () => {
         .map((tr) => tr.children
           .filter(onlyTypeTag)
           .map(({ children }) => (children.length > 0 ? children[0].data : '')).slice(2,5).splice(2,1))
-    
+      
+      console.log(data);
+      
   
       const content = $('.bbs_con tbody')[0].children
         .map((v, i) => {
@@ -39,3 +63,5 @@ export const cralwer = async () => {
   }
 }
 
+
+cralwer();
