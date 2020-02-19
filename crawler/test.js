@@ -1,28 +1,57 @@
-const axios = require('axios');
-const cheerio = require('cheerio');
-const puppeteer = require('puppeteer')
+import request from 'request';
+import cheerio from 'cheerio';
+import { Iconv } from 'iconv';
 
-let url = "https://information.hanyang.ac.kr/#/bbs/notice?offset=0&max=20&bulletinCategoryId=1,4"
-let url2 = "http://sw.hanyang.ac.kr/board/notice.php?ptype=&page=1&code=notice"
+const uri = 'https://www.nts.go.kr/openinfo/openinfo_03_01_list.asp?nsearch_utype=1';
+const MAPPER = ['num', 'year', 'name', 'age', 'shop', 'job', 'addr', 'total',
+  'taxItem', 'date', 'behiList'];
 
-const crawler = async() => {  
-  try {
-    const browser = await puppeteer.launch({ headless: false });
-    const page = await browser.newPage();
-    await page.goto(url);
-    const text = await page.evaluate(() => {
-      const data = document.querySelectorAll('.ng-scope')[0];
-      return data
-    })
-    console.log(text);
-    await page.close();
-    await browser.close();
-  } catch (e) {
-    console.error(e);
-  }
-  
-}
+const onlyTypeTag = ({ type }) => type === 'tag';
 
+const eucKrToUtf8 = (str) => {
+  const iconv = new Iconv('euc-kr', 'utf-8');
+  const buf = new Buffer(str, 'binary');
+  return iconv.convert(buf).toString();
+};
 
+export const getThiefs = async ({page}) => {
+  const data = await new Promise((resolve, reject) => {
+    request({
+      method: 'POST',
+      encoding: 'binary',
+      uri,
+      form: {
+        nsearch_page: page,
+      },
+    }, (err, res, body) => {
+      if (err) {
+        return reject(err);
+      }
 
-crawler();
+      return resolve(eucKrToUtf8(body));
+    });
+  });
+
+  const $ = cheerio.load(data);
+  return $('tbody')[0].children
+    .filter(onlyTypeTag)
+    .map((tr) => tr.children
+      .filter(onlyTypeTag)
+      .map(({ children }) => (children.length > 0 ? children[0].data : '')))
+    .map((i) => i.reduce((acc, cur, index) => ({
+      ...acc,
+      [MAPPER[index]]: cur,
+    }), {}));
+};
+© 2020 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Help
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About

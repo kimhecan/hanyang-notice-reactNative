@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
-import { WebView } from 'react-native-webview';
-import { softwareNoticeCrawler } from './crawler/code';
+import { softwareNoticeCrawler } from './crawler/software';
 global.Buffer = global.Buffer || require('buffer').Buffer
 
 export default function App() {
@@ -29,10 +28,6 @@ export default function App() {
             <Rows data={data} flexArr={[4,1.3]}  style={styles.rows} textStyle={styles.text}/>
             <Row data={tail} flexArr={[4,1.3]} style={styles.tail}></Row>
         </Table>
-        <WebView
-        source={{uri: 'http://sw.hanyang.ac.kr/board/notice.php'}}
-        style={{margin: 0,marginTop:10 ,width: 375, height:500}}
-      />
       </ScrollView>
     </View>
   );

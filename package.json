@@ -15,6 +15,7 @@
     "cheerio-without-node-native": "^1.0.0-rc.2",
     "events": "^3.1.0",
     "expo": "~36.0.0",
+    "iconv": "^2.3.5",
     "puppeteer": "^2.1.1",
     "react": "~16.9.0",
     "react-dom": "~16.9.0",
