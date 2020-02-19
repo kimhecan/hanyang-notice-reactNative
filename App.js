@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
 import { WebView } from 'react-native-webview';
-import { cralwer } from './crawler/code';
+import { softwareNoticeCrawler } from './crawler/code';
 global.Buffer = global.Buffer || require('buffer').Buffer
 
 export default function App() {
@@ -11,13 +11,13 @@ export default function App() {
   const [head, setHead] = useState(['content', 'day'])
   const [tail, setTail] = useState(['내용', '날짜'])
 
-  const result = async() => {
-    let result = await cralwer();
-    setData(result);
+  const noticeData = async() => {
+    let data = await softwareNoticeCrawler();
+    setData(data);
   }
 
   useEffect(() => {
-    result()
+    noticeData()
   },[]);
 
   return (

@@ -1,7 +1,7 @@
 const cheerio = require('cheerio-without-node-native');
 const axios = require('axios');
 
-export const cralwer = async () => {
+export const softwareNoticeCrawler = async () => {
 
   const onlyTypeTag = ({ type }) => type == 'tag'
   const uri = "http://sw.hanyang.ac.kr/board/notice.php?ptype=&page=1&code=notice"
@@ -17,13 +17,12 @@ export const cralwer = async () => {
           .filter(onlyTypeTag)
           .map(({ children }) => (children.length > 0 ? children[0].data : '')).slice(2,5).splice(2,1))
     
-  
+
+      const isEven = v => (v % 2) == 0;
+
       const content = $('.bbs_con tbody')[0].children
-        .map((v, i) => {
-          if (i % 2 == 0) {
-            return v.children.filter(onlyTypeTag)[2].children[1].children[0].data
-          }
-        }).filter(v => v !== undefined)
+        .filter((v, i) => isEven(i))
+        .map(v => v.children.filter(onlyTypeTag)[2].children[1].children[0].data);
   
       
       const result = data.map((v, i) => {
