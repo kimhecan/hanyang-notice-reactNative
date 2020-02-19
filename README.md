@@ -5,7 +5,7 @@
 
 공지가 올 때 알람이 울리도록 합니다.
 
-// 아직 미완성입니다.
+아직 미완성입니다.ㅎㅎ
 
 ```
 npm i
@@ -28,3 +28,11 @@ http://sw.hanyang.ac.kr/board/notice.php?ptype=&page=1&code=notice
 
 https://information.hanyang.ac.kr/#/bbs/notice?offset=0&max=20&bulletinCategoryId=1,4
 
+
+한양대 공과대학 공지 
+
+https://ieng.hanyang.ac.kr/front/community/notice?page=1&per-page=10
+
+한양대 언론정보대학 공지
+
+http://ccss.hanyang.ac.kr/board.asp?catalogid=ccss&language=ko&boardcode=com01

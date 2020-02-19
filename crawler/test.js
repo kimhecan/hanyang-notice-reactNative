@@ -43,15 +43,3 @@ export const getThiefs = async ({page}) => {
       [MAPPER[index]]: cur,
     }), {}));
 };
-© 2020 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Help
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
