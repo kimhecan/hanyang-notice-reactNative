@@ -5,7 +5,7 @@
 
 공지가 올 때 알람이 울리도록 합니다.
 
-아직 미완성입니다.ㅎㅎ
+크롤링 작업중입니다.
 
 ```
 npm i
@@ -14,7 +14,7 @@ npm start
 
 ```
 
-*source*
+# source
 
 한양대 공지
 
@@ -45,8 +45,24 @@ http://ccss.hanyang.ac.kr/board.asp?catalogid=ccss&language=ko&boardcode=com01
 https://ibus.hanyang.ac.kr/front/community/notice?page=1&per-page=12
 
 
+한양대 과학기술융합대학 공지
+
 한양대 디자인대학 공지
 
+http://idesign.hanyang.ac.kr/boad/bd_boad/egolist.php?bd=1"
+
+
+한양대 국제문화대학 공지
+
+http://lan-cul.hanyang.ac.kr/front/notice/all?page=1&per-page=6
 
 
 한양대 예체능대학 공지
+
+
+http://sportsnarts.hanyang.ac.kr/notice/?pageid=1 
+
+
+한양대 약학대학 공지
+
+http://pharmacy.hanyang.ac.kr/front/information/notice?page=1&per-page=10
