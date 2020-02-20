@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-const softwareNoticeCrawler = async () => {
+const libraryNoticeCrawler = async () => {
 
   const url = "https://lib.hanyang.ac.kr/pyxis-api/2/bulletin-boards/1/bulletins?bulletinCategoryId=1,4&max=20&offset=0"
   let result = [];
@@ -19,4 +19,4 @@ const softwareNoticeCrawler = async () => {
 }
 
 
-softwareNoticeCrawler()
+libraryNoticeCrawler()

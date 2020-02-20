@@ -21,7 +21,7 @@ const meidaNoticeCrawler = async () => {
       const html = eucKrToUtf8(response.data);
       const $ = cheerio.load(html);
 
-      for(let i=0; i<40; i++) {
+      for(let i=0; i<$('.tabletextlist').length; i++) {
         if ( i % 4 === 0) result.push([$('.tabletextlist')[i].children[0].children[0].data])
         if ( (i-2) % 4 ===0) result[(i-2)/4].push($('.tabletextlist')[2].children[0].data)
       }
