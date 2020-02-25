@@ -1,72 +1,108 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, ScrollView } from 'react-native';
-import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
-import { softwareNoticeCrawler } from './crawler/software';
+import { StyleSheet, Text, View,FlatList} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+
+
 global.Buffer = global.Buffer || require('buffer').Buffer
 
 export default function App() {
 
-  const [data, setData] = useState();
-  const [head, setHead] = useState(['content', 'day'])
-  const [tail, setTail] = useState(['내용', '날짜'])
+  const data = [
+    {key: '에리카'}, {key: '학술정보관'}, {key: '소프트웨어\n융합대학'},
+    {key: '약학대학'}, {key: '공과대학'}, {key: '국제문화\n대학'},
+    {key: '언론정보\n대학'}, {key: '경상대학'}, {key: '과학기술\n융합대학'},
+    {key: '디자인대학'}, {key: '예체능대학'}
+  ]
 
-  const noticeData = async() => {
-    let data = await softwareNoticeCrawler();
-    setData(data);
+  const formatData = (data, numColumns) => {
+    const numberOfFullRows = Math.floor(data.length / numColumns);
+  
+    let numberOfElementsLastRow = data.length - (numberOfFullRows * numColumns);
+    while (numberOfElementsLastRow !== numColumns && numberOfElementsLastRow !== 0) {
+      data.push({ key: `blank-${numberOfElementsLastRow}`, empty: true });
+      numberOfElementsLastRow++;
+    }
+  
+    return data;
+  };
+
+  const renderItem = ({ item, index }) => {
+    if (item.empty === true) {
+      return <View style={[styles.item, styles.itemInvisible]} />;
+    }
+    return (
+      <View
+        style={styles.item}
+      >
+        <Text style={styles.itemText}>{item.key}</Text>
+      </View>
+    );
+  };
+
+  const numColumns = 3
+
+  const onSelect = () => {
+    
   }
 
-  useEffect(() => {
-    noticeData()
-  },[]);
-
   return (
-    <View style={styles.container}>
-      <ScrollView>
-        <Text style={styles.notice}>공지사항</Text>
-        <Table borderStyle={{borderWidth: 1.5, borderColor: '#c8e1ff'}} style={styles.table}>
-            <Row data={head} flexArr={[4,1.3]} style={styles.head} textStyle={styles.text}/>
-            <Rows data={data} flexArr={[4,1.3]}  style={styles.rows} textStyle={styles.text}/>
-            <Row data={tail} flexArr={[4,1.3]} style={styles.tail}></Row>
-        </Table>
-      </ScrollView>
-    </View>
+    <NavigationContainer style={styles.container}>
+      <View style={styles.head}><Text style={styles.headText}>HANYANG UNIVERSITY NOICE</Text></View>
+        <FlatList
+          data={formatData(data, 3)}
+          style={styles.list}
+          renderItem={renderItem}
+          numColumns={numColumns}
+          onSelect={onSelect}
+        />
+    </NavigationContainer>
   );
 }
 
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#3669CF',
-  },
-  notice: {
-    textAlign: 'center',
-    marginTop: 40,
-    color: 'white',
-    fontSize: 20,
-    fontWeight: 'bold'
-  },
-  table: {
-    margin: 20,
-    marginTop: 35,
-    borderRadius:15,
 
   },
+  table: {
+    backgroundColor: "#134763",
+  },
   head: {
-    height: 40,
-    backgroundColor: '#f1f8ff',
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
+    backgroundColor: '#134763',
+    marginTop: 16,
+    height: 50
   },
-  text: {
-    fontSize: 15,
-    padding: 5
+  headText: {
+    textAlign: 'center',
+    textAlignVertical: 'center',
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: 17,
+    
   },
-  rows: {
-    backgroundColor: '#FFFFFF',
+  list: {
+    marginVertical: 20,
+    marginHorizontal: 10
   },
-  tail: {
-    backgroundColor: '#FFFFFF',
-    borderBottomLeftRadius: 10,
-    borderBottomRightRadius: 10
-  }
+  item: {
+    backgroundColor: '#134763',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1,
+    margin: 3,
+    marginBottom: 40,
+    height: 200,
+    borderRadius: 5
+  },
+  itemText: {
+    color: 'white',
+    fontSize: 20,
+  },
+  itemInvisible: {
+    backgroundColor: 'transparent',
+  },
+
 });
+
+

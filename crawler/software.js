@@ -1,9 +1,8 @@
 const cheerio = require('cheerio-without-node-native');
 const axios = require('axios');
+const softwareNoticeCrawler = async () => {
 
-export const softwareNoticeCrawler = async () => {
-
-  const uri = "http://sw.hanyang.ac.kr/board/notice.php?ptype=&page=1&code=notice"
+  const uri = "http://computing.hanyang.ac.kr/open/notice.php?ptype=&page=1&code=notice"
   let result = [];
 
   try {
@@ -18,6 +17,9 @@ export const softwareNoticeCrawler = async () => {
           $('.left')[i].next.next.next.next.children[0].data
         ])
       }
+
+      console.log(result);
+      
 
       
       return result;
