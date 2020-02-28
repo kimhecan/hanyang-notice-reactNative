@@ -12,12 +12,11 @@ const softwareNoticeCrawler = async () => {
       const $ = cheerio.load(html);
 
       for(let i=0; i<$('.left').length; i++) {
-        result.push([
-          $('.left')[i].children[1].children[0].data,
-          $('.left')[i].next.next.next.next.children[0].data
-        ])
+        result.push({
+          'title': $('.left')[i].children[1].children[0].data,
+          'date': $('.left')[i].next.next.children[0].data
+        })
       }
-
       console.log(result);
       
 
