@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, FlatList } from 'react-native';
 import { softwareNoticeCrawler } from './crawler/software';
 global.Buffer = global.Buffer || require('buffer').Buffer
 
-export default function App() {
+function softwareCrawler() {
 
   let data;
 
@@ -15,9 +15,18 @@ export default function App() {
     <View style={styles.container}>
       <View style={styles.head}><Text style={styles.headText}>대학공지</Text></View>
       <FlatList
-        data={data}
-        
-      />
+          data={data}
+          style={styles.list}
+          renderItem={({ item, index}) => {
+            return (
+              <View>
+                <Tex>{item.title}</Tex>
+                <Text>{item.date}</Text>
+              </View>
+            )
+          }}
+          //onSelect={onSelect}
+        />
     </View>
   );
 }
@@ -33,3 +42,6 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   }
 });
+
+
+export default softwareCrawler
