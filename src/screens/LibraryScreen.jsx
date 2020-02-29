@@ -1,13 +1,13 @@
 import React, { useEffect,useState } from 'react';
 import { StyleSheet, Text, View, FlatList } from 'react-native';
-import hanyangNoticeCrawler from '../../crawler/hanyang';
+import libraryNoticeCrawler from '../../crawler/lib';
 
-function HanyangScreen() {
+function LibraryScreen() {
 
   const [data, setData] = useState([])
 
   async function fetchData() {
-    setData(await hanyangNoticeCrawler());
+    setData(await libraryNoticeCrawler());
   }
 
   useEffect(() => {
@@ -24,10 +24,7 @@ function HanyangScreen() {
           return (
             <View style={styles.listView}>
               <Text style={styles.listText}>{item.title}</Text>
-              <View style={styles.elem}>
-                <Text style={styles.class}>{item.class}</Text>
-                <Text style={styles.date}>{item.date}</Text>
-              </View>
+              <Text style={styles.date}>{item.date}</Text>
               <View style={styles.border}></View>
             </View>
           )
@@ -53,17 +50,9 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
 
   },
-  elem: {
-    flex: 1,
-    justifyContent: 'space-between',
-    flexDirection: 'row',
-  },  
-  class: {
-    color: 'gray',
-  
-  },
   date: {
     color: 'gray',
+    textAlign: 'right',
   },
   border: {
     backgroundColor: '#CECFD1',
@@ -74,4 +63,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default HanyangScreen
+export default LibraryScreen

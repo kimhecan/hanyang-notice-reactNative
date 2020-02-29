@@ -15,17 +15,17 @@ const engineerNoticeCrawler = async () => {
       const $ = cheerio.load(html);
 
       for (let i=0; i< $('.datetime').length; i++) {
-        result.push([
-          $('.subject')[i].children.filter(onlyTypeText)[$('.subject')[i].children.filter(onlyTypeText).length - 1].data.trim(),
-          $('.datetime')[i].children[0].data
-        ]);
+        result.push({
+          title: $('.subject')[i].children.filter(onlyTypeText)[$('.subject')[i].children.filter(onlyTypeText).length - 1].data.trim(),
+          date: $('.datetime')[i].children[0].data
+        });
       }
     }
-    console.log(result);
+    return result;
        
   } catch (e) {
     console.error(e);
   }
 }
 
-engineerNoticeCrawler()
+export default engineerNoticeCrawler;

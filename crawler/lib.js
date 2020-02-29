@@ -9,14 +9,15 @@ const libraryNoticeCrawler = async () => {
     const response = await axios(url);
     if (response.status === 200) {
       const data = response.data.data.list;
-      data.forEach(v => result.push([v.title, v.dateCreated.substr(0, 10)]));
-
-      console.log(result);
+      data.forEach(v => result.push({
+        title: v.title,
+        date:  v.dateCreated.substr(0, 10)}));
     }   
+    return result;
   } catch (e) {
     console.error(e);
   }
 }
 
 
-libraryNoticeCrawler()
+export default libraryNoticeCrawler;

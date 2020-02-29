@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     height: 200,
     width: 110,
     borderRadius: 5,
-    shadowOffset:{  width: 5,  height: 5},
+    shadowOffset:{  width: 3,  height: 3},
     shadowColor: 'black',
     shadowOpacity: 1.0,
   },

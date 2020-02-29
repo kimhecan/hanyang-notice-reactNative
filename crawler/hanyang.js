@@ -1,7 +1,5 @@
 const cheerio = require('cheerio-without-node-native');
 const axios = require('axios');
-const Iconv = require('iconv').Iconv
-const Buffer = require('buffer').Buffer
 
 
 const hanyangNoticeCrawler = async () => {
@@ -10,19 +8,19 @@ const hanyangNoticeCrawler = async () => {
   let result = [];
 
   try {
-    const response = await axios(url, { responseType: 'arraybuffer'});
+    const response = await axios(url);
     if (response.status === 200) {
       const html = response.data;
       const $ = cheerio.load(html);
 
       for(let i=0; i< $('.title').length; i++) {
-        result.push([
-          $('.title')[i].children[1].children[0].data,
-          $('.title')[i].children[3].children[0].data,
-          data3 = $('.date')[i].children[0].data.trim()
-        ])
+        result.push({
+          class: $('.title')[i].children[1].children[0].data,
+          title: $('.title')[i].children[3].children[0].data,
+          date: $('.date')[i].children[0].data.trim()
+        })
       }
-      console.log(result);
+      return result;
       
     }  
   } catch (e) {
@@ -30,4 +28,4 @@ const hanyangNoticeCrawler = async () => {
   }
 }
 
-hanyangNoticeCrawler()
+export default hanyangNoticeCrawler;

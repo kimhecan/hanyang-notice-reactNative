@@ -14,12 +14,12 @@ const pharmacyNoticeCrawler = async () => {
       const $ = cheerio.load(html);
       
       for(let i=0; i<$('.subject').length; i++) {
-        result.push([
-          $('.subject')[i].children[$('.subject')[i].children.length-1].data.trim(),
-          $('.datetime')[i].children[0].data
-        ])
+        result.push({
+          title: $('.subject')[i].children[$('.subject')[i].children.length-1].data.trim(),
+          date: $('.datetime')[i].children[0].data
+        })
       }
-      console.log(result);
+      return result;
     }
     
   } catch (e) {
@@ -28,4 +28,4 @@ const pharmacyNoticeCrawler = async () => {
 }
 
 
-pharmacyNoticeCrawler()
+export default pharmacyNoticeCrawler
