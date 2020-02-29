@@ -35,7 +35,6 @@ export default function App() {
     }}
 
     const headerStyle2 = {
-
       headerStyle: {
         backgroundColor: '#134763',
       },
@@ -54,12 +53,12 @@ export default function App() {
       <Stack.Screen name="Software" component={SoftwareScreen} options={headerStyle2}/>
       <Stack.Screen name="Pharmacy" component={PharmacyScreen} options={headerStyle2}/>
       <Stack.Screen name="Engineer" component={EngineerScreen} options={headerStyle2}/>
-      {/* <Stack.Screen name="Culture" component={CultureScreen}/>
-      <Stack.Screen name="Media" component={MediaScreen}/>
-      <Stack.Screen name="Economic" component={EconomicScreen}/>
-      <Stack.Screen name="Science" component={ScienceScreen}/>
-      <Stack.Screen name="Design" component={DesignScreen}/>
-      <Stack.Screen name="Sport" component={SportScreen}/> */}
+      <Stack.Screen name="Culture" component={CultureScreen} options={headerStyle2}/>
+      <Stack.Screen name="Media" component={MediaScreen} options={headerStyle2}/>
+      <Stack.Screen name="Economic" component={EconomicScreen} options={headerStyle2}/>
+      <Stack.Screen name="Science" component={ScienceScreen} options={headerStyle2}/>
+      <Stack.Screen name="Design" component={DesignScreen} options={headerStyle2}/>
+      <Stack.Screen name="Sport" component={SportScreen} options={headerStyle2}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

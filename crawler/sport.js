@@ -13,16 +13,16 @@ const sportNoticeCrawler = async () => {
       const $ = cheerio.load(html);
 
       for(let i=0; i<$('.cut_strings').length; i++) {
-        result.push([
-          $('.cut_strings')[i].children[1].children[0].data.trim(),
-          $('.kboard-list-date')[i+1].children[0].data
-        ])
+        result.push({
+          title: $('.cut_strings')[i].children[1].children[0].data.trim(),
+          date: $('.kboard-list-date')[i+1].children[0].data
+        })
       }
-      console.log(result);
+      return result;
     }
   } catch (e) {
     console.error(e);
   }
 }
 
-sportNoticeCrawler()
+export default sportNoticeCrawler;

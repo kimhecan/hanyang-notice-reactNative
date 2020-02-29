@@ -22,10 +22,11 @@ const meidaNoticeCrawler = async () => {
       const $ = cheerio.load(html);
 
       for(let i=0; i<$('.tabletextlist').length; i++) {
-        if ( i % 4 === 0) result.push([$('.tabletextlist')[i].children[0].children[0].data])
-        if ( (i-2) % 4 ===0) result[(i-2)/4].push($('.tabletextlist')[2].children[0].data)
+        if ( i % 4 === 0) result.push({title: $('.tabletextlist')[i].children[0].children[0].data});
+        if ( (i-2) % 4 ===0) result[(i-2)/4].date = $('.tabletextlist')[2].children[0].data;
       }
-      console.log(result);
+
+      return result;
     }  
   } catch (e) {
     console.error(e);

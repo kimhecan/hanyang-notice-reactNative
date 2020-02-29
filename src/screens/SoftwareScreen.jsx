@@ -2,7 +2,7 @@ import React, { useEffect,useState } from 'react';
 import { StyleSheet, Text, View, FlatList } from 'react-native';
 import softwareNoticeCrawler from '../../crawler/software';
 
-function softwareScreen() {
+function SoftwareScreen() {
 
   const [data, setData] = useState([])
 
@@ -63,4 +63,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default softwareScreen
+export default SoftwareScreen

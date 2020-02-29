@@ -15,20 +15,20 @@ const economicNoticeCrawler = async () => {
       const html = response.data;
       const $ = cheerio.load(html);
 
-      for(let i=0; i<20; i++) {
-        result.push([
-          $('.text-left')[i].children.filter(onlyNameA)[0].children[0].data.trim(),
-          $('.text-left')[i].next.next.children[0].data
-        ])
+      for(let i=0; i<$('.is-notice').length; i++) {
+        result.push({
+          title: $('.text-left')[i].children.filter(onlyNameA)[0].children[0].data.trim(),
+          date: $('.text-left')[i].next.next.children[0].data
+        })
       }
       
-      for(let i=20; i<$('.text-left').length; i++) {
-        result.push([
-          $('.text-left')[i].children.filter(onlyNameA)[0].children.filter(onlyTypeText)[1].data.trim(),
-          $('.text-left')[i].next.next.children[0].data
-        ])
+      for(let i=$('.is-notice').length; i<$('.text-left').length; i++) {
+        result.push({
+          title: $('.text-left')[i].children.filter(onlyNameA)[0].children.filter(onlyTypeText)[1].data.trim(),
+          date: $('.text-left')[i].next.next.children[0].data
+        })
       }
-      console.log(result);
+      return result;
     }
 
   } catch (e) {
@@ -36,4 +36,4 @@ const economicNoticeCrawler = async () => {
   }
 }
 
-economicNoticeCrawler()
+export default economicNoticeCrawler

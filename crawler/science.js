@@ -13,22 +13,22 @@ const scienceNoticeCrawler = async () => {
       const $ = cheerio.load(html);
 
       for (let i=0; i<8; i++) {        
-        result.push([
-          $('.td-subject.ellipsis a')[i].children[1].children[0].data,
-          $('.td-date.hidden-xs')[i].children[0].data.substr(1,)
-        ])
+        result.push({
+          title: $('.td-subject.ellipsis a')[i].children[1].children[0].data,
+          date: $('.td-date.hidden-xs')[i].children[0].data.substr(1,)
+        })
       }
       for (let i=8; i<15; i++) {        
-        result.push([
-          $('.td-subject.ellipsis a')[i].children[0].data.substr(1,),
-          $('.td-date.hidden-xs')[i].children[0].data.substr(1,)
-        ])
+        result.push({
+          title: $('.td-subject.ellipsis a')[i].children[0].data.substr(1,),
+          date: $('.td-date.hidden-xs')[i].children[0].data.substr(1,)
+        })
       }
-      console.log(result);
+      return result
     }  
   } catch (e) {
     console.error(e);
   }
 }
 
-scienceNoticeCrawler()
+export default scienceNoticeCrawler
