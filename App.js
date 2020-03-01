@@ -4,12 +4,12 @@ import {createStackNavigator} from '@react-navigation/stack';
 import HomeScreen from './src/screens/HomeScreen';
 import HanyangScreen from './src/screens/HanyangScreen';
 import LibraryScreen from './src/screens/LibraryScreen';
-import MandatoryScreen from './src/screens/MandatoryScreen';
+// import MandatoryScreen from './src/screens/MandatoryScreen';
 import SoftwareScreen from './src/screens/SoftwareScreen';
 import PharmacyScreen from './src/screens/PharmacyScreen';
 import EngineerScreen from './src/screens/EngineerScreen';
 import CultureScreen from './src/screens/CultureScreen';
-import MediaScreen from './src/screens/MediaScreen';
+// import MediaScreen from './src/screens/MediaScreen';
 import EconomicScreen from './src/screens/EconomicScreen';
 import ScienceScreen from './src/screens/ScienceScreen';
 import DesignScreen from './src/screens/DesignScreen';
@@ -54,7 +54,7 @@ export default function App() {
       <Stack.Screen name="Pharmacy" component={PharmacyScreen} options={headerStyle2}/>
       <Stack.Screen name="Engineer" component={EngineerScreen} options={headerStyle2}/>
       <Stack.Screen name="Culture" component={CultureScreen} options={headerStyle2}/>
-      <Stack.Screen name="Media" component={MediaScreen} options={headerStyle2}/>
+      {/* <Stack.Screen name="Media" component={MediaScreen} options={headerStyle2}/> */}
       <Stack.Screen name="Economic" component={EconomicScreen} options={headerStyle2}/>
       <Stack.Screen name="Science" component={ScienceScreen} options={headerStyle2}/>
       <Stack.Screen name="Design" component={DesignScreen} options={headerStyle2}/>

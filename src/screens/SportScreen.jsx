@@ -29,6 +29,7 @@ function SportScreen() {
             </View>
           )
         }}
+        keyExtractor={(item, index) => index.toString()}
       />
     :
     <Text>데이터 없음</Text>

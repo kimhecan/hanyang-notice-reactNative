@@ -19,6 +19,7 @@ function Home({navigation}) {
       <View>
         <TouchableOpacity style={styles.itemButton} onPress={() => navigation.push(item.key)}>
           <Text style={styles.item}>{item.kr}</Text>
+          <Text style={styles.item2}>{item.key}</Text>
         </TouchableOpacity>
       </View>
     );
@@ -30,7 +31,8 @@ function Home({navigation}) {
           data={data}
           style={styles.list}
           renderItem={renderItem}
-          numColumns={3}
+          numColumns={2}
+          keyExtractor={(item, index) => index.toString()}
         />
     </View>
   );
@@ -46,10 +48,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#134763',
     alignItems: 'center',
     justifyContent: 'center',
-    margin: 3,
+    margin: 20,
     marginBottom: 40,
-    height: 200,
-    width: 110,
+    height: 170,
+    width: 140,
     borderRadius: 5,
     shadowOffset:{  width: 3,  height: 3},
     shadowColor: 'black',
@@ -57,8 +59,15 @@ const styles = StyleSheet.create({
   },
   item: {
     color: 'white',
-    fontSize: 20,
-    fontWeight: 'bold'
+    fontSize: 21,
+    fontWeight: 'bold',
+    textAlign: 'center'
+  },
+  item2: {
+    color: 'white',
+    fontSize: 15,
+    fontWeight: 'normal',
+    textAlign: 'center'
   }
 });
 
