@@ -4,7 +4,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import HomeScreen from './src/screens/HomeScreen';
 import HanyangScreen from './src/screens/HanyangScreen';
 import LibraryScreen from './src/screens/LibraryScreen';
-// import MandatoryScreen from './src/screens/MandatoryScreen';
+import MandatoryScreen from './src/screens/Mandatory/MandatoryScreen';
 import SoftwareScreen from './src/screens/SoftwareScreen';
 import PharmacyScreen from './src/screens/PharmacyScreen';
 import EngineerScreen from './src/screens/EngineerScreen';
@@ -43,13 +43,17 @@ export default function App() {
         fontWeight: 'bold',
       }}
 
+      const headerStyle3 = {
+        headerShown: false
+      }
+
   return (
     <NavigationContainer initialRouteName="Home">
       <Stack.Navigator>
       <Stack.Screen name="Home" component={HomeScreen} options={headerStyle}/>
       <Stack.Screen name="Hanyang" component={HanyangScreen} options={headerStyle2}/>
       <Stack.Screen name="Library" component={LibraryScreen} options={headerStyle2}/>
-      {/* <Stack.Screen name="Mandatory" component={MandatoryScreen}/> */}
+      <Stack.Screen name="Mandatory" component={MandatoryScreen} options={headerStyle3}/>
       <Stack.Screen name="Software" component={SoftwareScreen} options={headerStyle2}/>
       <Stack.Screen name="Pharmacy" component={PharmacyScreen} options={headerStyle2}/>
       <Stack.Screen name="Engineer" component={EngineerScreen} options={headerStyle2}/>
