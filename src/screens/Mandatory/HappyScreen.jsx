@@ -1,6 +1,6 @@
 import React, { useEffect,useState } from 'react';
 import { StyleSheet, Text, View, FlatList } from 'react-native';
-import { mandatoryNoticeCrawler2 } from '../../../crawler/mandatory';
+import mandatoryNoticeCrawler2 from '../../../crawler/madatory/happy';
 
 function HappyScreen() {
 
