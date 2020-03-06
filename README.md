@@ -5,7 +5,8 @@
 
 공지가 올 때 알람이 울리도록 합니다.
 
-크롤링 작업중입니다.
+아직 작업중입니다.
+
 
 ```
 npm i
@@ -13,6 +14,9 @@ npm i
 npm start
 
 ```
+![KakaoTalk_20200306_225056710](https://user-images.githubusercontent.com/39295881/76089549-347a0d00-5ffd-11ea-9779-0bb1b786de49.png)
+
+
 
 # source
 
