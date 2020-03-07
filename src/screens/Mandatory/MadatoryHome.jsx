@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 10
   },
   itemButton: {
-    backgroundColor: '#134763',
+    backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: 'center',
     margin: 20,
@@ -49,21 +49,22 @@ const styles = StyleSheet.create({
     height: 170,
     width: 140,
     borderRadius: 5,
-    shadowOffset:{  width: 3,  height: 3},
-    shadowColor: 'black',
-    shadowOpacity: 1.0,
+    shadowOffset:{  width: 10,  height: 10},
+    shadowColor: 'gray',
+    shadowOpacity: 0.1,
   },
   item: {
-    color: 'white',
+    color: '#3C72E0',
     fontSize: 21,
     fontWeight: 'bold',
     textAlign: 'center'
   },
   item2: {
-    color: 'white',
+    color: '#3C72E0',
     fontSize: 15,
     fontWeight: 'normal',
-    textAlign: 'center'
+    textAlign: 'center',
+    marginTop: 10
   }
 });
 

@@ -15,18 +15,12 @@ const mandatoryNoticeCrawler2 = async () => {
       
       for(let i=0; i<$('.subj_bold').length; i++) {
 
-        if (i==15) {
-          result.push({
-          title: $('.subj_bold')[i].children[0].children[0].data,
-          date: $('.subj_bold')[i].next.next.next.next.children[0].data
-          })
-          continue;
-        }
         result.push({
           title: $('.subj_bold')[i].children[0].children[0].data,
           date: $('.subj_bold')[i].next.next.next.children[0].data
         })
-      }    
+      } 
+
       return result;
     }
 

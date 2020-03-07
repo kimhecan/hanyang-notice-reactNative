@@ -36,7 +36,7 @@ export default function App() {
 
     const headerStyle2 = {
       headerStyle: {
-        backgroundColor: '#134763',
+        backgroundColor: '#3C72E0',
       },
       headerTintColor: 'white',
       headerTitleStyle: {
@@ -48,18 +48,18 @@ export default function App() {
     <NavigationContainer initialRouteName="Home">
       <Stack.Navigator>
       <Stack.Screen name="Home" component={HomeScreen} options={headerStyle}/>
-      <Stack.Screen name="Hanyang" component={HanyangScreen} options={headerStyle2}/>
+      <Stack.Screen name="Campus" component={HanyangScreen} options={headerStyle2}/>
       <Stack.Screen name="Library" component={LibraryScreen} options={headerStyle2}/>
-      <Stack.Screen name="Mandatory" component={MandatoryScreen} options={headerStyle2}/>
-      <Stack.Screen name="Software" component={SoftwareScreen} options={headerStyle2}/>
+      <Stack.Screen name="Dormitory" component={MandatoryScreen} options={headerStyle2}/>
+      <Stack.Screen name="Computing" component={SoftwareScreen} options={headerStyle2}/>
       <Stack.Screen name="Pharmacy" component={PharmacyScreen} options={headerStyle2}/>
-      <Stack.Screen name="Engineer" component={EngineerScreen} options={headerStyle2}/>
-      <Stack.Screen name="Culture" component={CultureScreen} options={headerStyle2}/>
-      <Stack.Screen name="Media" component={MediaScreen} options={headerStyle2}/>
-      <Stack.Screen name="Economic" component={EconomicScreen} options={headerStyle2}/>
-      <Stack.Screen name="Science" component={ScienceScreen} options={headerStyle2}/>
+      <Stack.Screen name="Engineering Sciences" component={EngineerScreen} options={headerStyle2}/>
+      <Stack.Screen name="Languages & Cultures" component={CultureScreen} options={headerStyle2}/>
+      <Stack.Screen name="Communication" component={MediaScreen} options={headerStyle2}/>
+      <Stack.Screen name="Business And Economics" component={EconomicScreen} options={headerStyle2}/>
+      <Stack.Screen name="Science & Convergence Technology" component={ScienceScreen} options={headerStyle2}/>
       <Stack.Screen name="Design" component={DesignScreen} options={headerStyle2}/>
-      <Stack.Screen name="Sport" component={SportScreen} options={headerStyle2}/>
+      <Stack.Screen name="Sports And Arts" component={SportScreen} options={headerStyle2}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
