@@ -1,5 +1,6 @@
 import React, { useEffect,useState } from 'react';
-import { StyleSheet, Text, View, FlatList } from 'react-native';
+import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native';
+import { Linking } from 'expo';
 import mandatoryNoticeCrawler1 from '../../../crawler/madatory/creation';
 
 function HappyScreen() {
@@ -22,14 +23,14 @@ function HappyScreen() {
         style={styles.list}
         renderItem={({ item }) => {
           return (
-            <View style={styles.listView}>
+            <TouchableOpacity  style={styles.listView} onPress={() => Linking.openURL(item.url)}>
               <Text style={styles.listText}>{item.title}</Text>
               <View style={styles.elem}>
                 <Text style={styles.class}>{item.class}</Text>
                 <Text style={styles.date}>{item.date}</Text>
               </View>
               <View style={styles.border}></View>
-            </View>
+            </TouchableOpacity>
           )
         }}
         keyExtractor={(item, index) => index.toString()}

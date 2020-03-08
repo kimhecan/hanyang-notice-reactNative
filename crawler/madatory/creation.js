@@ -4,6 +4,7 @@ const axios = require('axios');
 const mandatoryNoticeCrawler1 = async () => {
 
   const url = "http://hydorm.hanyang.ac.kr/service/board/notice/index.do?page=1" //창의/인재관
+  const url2 = "http://hydorm.hanyang.ac.kr/service/board/notice/view.do?bdSeq="
   let result = [];
 
   try {
@@ -15,7 +16,8 @@ const mandatoryNoticeCrawler1 = async () => {
       for(let i=0; i<$('.subj_bold').length; i++) {
         result.push({
           title: $('.subj_bold')[i].children[0].children[0].data,
-          date: $('.subj_bold')[i].next.next.next.children[0].data
+          date: $('.subj_bold')[i].next.next.next.children[0].data,
+          url: url2 + /\d+/g.exec($('.subj_bold')[i].children[0].attribs.onclick)[0]
         })
       }
       return result;

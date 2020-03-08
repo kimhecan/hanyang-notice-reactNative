@@ -1,5 +1,6 @@
 import React, { useEffect,useState } from 'react';
-import { StyleSheet, Text, View, FlatList } from 'react-native';
+import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native';
+import { Linking } from 'expo';
 import softwareNoticeCrawler from '../../crawler/software';
 
 function SoftwareScreen() {
@@ -22,11 +23,11 @@ function SoftwareScreen() {
         style={styles.list}
         renderItem={({ item }) => {
           return (
-            <View style={styles.listView}>
+            <TouchableOpacity  style={styles.listView} onPress={() => Linking.openURL(item.url)}>
               <Text style={styles.listText}>{item.title}</Text>
               <Text style={styles.date}>{item.date}</Text>
               <View style={styles.border}></View>
-            </View>
+            </TouchableOpacity>
           )
         }}
         keyExtractor={(item, index) => index.toString()}
