@@ -30,7 +30,7 @@ export default function App() {
   const headerStyle = {
     title: 'HANYANG UNIVERSITY NOTICE',
     headerStyle: {
-      backgroundColor: '#3C72E0',
+      backgroundColor: '#0D3FA5',
     },
     headerTintColor: 'white',
     headerTitleStyle: {
@@ -39,7 +39,7 @@ export default function App() {
 
     const headerStyle2 = {
       headerStyle: {
-        backgroundColor: '#3C72E0',
+        backgroundColor: '#002D93',
       },
       headerTintColor: 'white',
       headerTitleStyle: {

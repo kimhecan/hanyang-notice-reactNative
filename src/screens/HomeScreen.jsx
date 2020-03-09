@@ -7,7 +7,7 @@ global.Buffer = global.Buffer || require('buffer').Buffer
 function Home({navigation}) {
 
   const data = [
-    {key: 'Campus', kr: "에리카", src: 'https://user-images.githubusercontent.com/39295881/76086323-3b058600-5ff7-11ea-8a5a-91fde91ab168.png'},
+    {key: 'Campus', kr: "캠퍼스", src: 'https://user-images.githubusercontent.com/39295881/76086323-3b058600-5ff7-11ea-8a5a-91fde91ab168.png'},
     {key: 'Library', kr:"학술정보관", src: 'https://user-images.githubusercontent.com/39295881/76086771-24136380-5ff8-11ea-8c12-03c74953d399.png'},
     {key: 'Dormitory',kr: "기숙사", src: 'https://user-images.githubusercontent.com/39295881/76087036-b156b800-5ff8-11ea-9574-cfdc9d7d91f6.png'}, 
     {key: 'Computing', kr: "소프트웨어\n융합대학", src: 'https://user-images.githubusercontent.com/39295881/76087135-dea36600-5ff8-11ea-8535-14976347d36b.png'}, 
@@ -24,9 +24,9 @@ function Home({navigation}) {
 
   const renderItem = ({item}) => {
     return (
-      <View>
+      <View style={styles.container}>
         <TouchableOpacity style={styles.itemButton} onPress={() => navigation.push(item.key)}>
-          <Image style={{width: 50, height: 50, tintColor: '#3C72E0'}} source={{uri: item.src}} />
+          <Image style={{width: 50, height: 50, tintColor: '#002D93'}} source={{uri: item.src}} />
           <Text style={styles.item}>{item.kr}</Text>
           <Text style={styles.item2}>{item.key}</Text>
         </TouchableOpacity>
@@ -49,6 +49,9 @@ function Home({navigation}) {
 
 
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: 'white'
+  },
   list: {
     marginVertical: 20,
     marginHorizontal: 10
@@ -57,24 +60,26 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: 'center',
-    margin: 20,
+    margin: 18,
     marginBottom: 40,
     height: 170,
     width: 140,
-    borderRadius: 5,
-    shadowOffset:{  width: 10,  height: 10},
-    shadowColor: 'gray',
-    shadowOpacity: 0.1,
+    // borderRadius: 5,
+    shadowOffset:{  width: 10,  height: 15},
+    shadowColor: '#D5D5D5',
+    shadowOpacity: 0.3,
+    shadowRadius: 5,
+    elevation: 1,
   },
   item: {
-    color: '#3C72E0',
+    color: '#002D93',
     fontSize: 21,
     fontWeight: 'bold',
     textAlign: 'center',
     marginTop: 5
   },
   item2: {
-    color: '#3C72E0',
+    color: '#002D93',
     fontSize: 15,
     fontWeight: 'normal',
     textAlign: 'center',
