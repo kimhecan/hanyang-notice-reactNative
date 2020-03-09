@@ -11,9 +11,6 @@ const designNoticeCrawler = async () => {
     if (response.status === 200) {
       const html = response.data;
       const $ = cheerio.load(html);
-
-
-      console.log( $('.c-table_link')[0].attribs.href);
       
       for(let i=0; i< $('.c-table_link').length; i++) {
         result.push({

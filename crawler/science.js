@@ -28,7 +28,6 @@ const scienceNoticeCrawler = async () => {
           url: $('.td-subject.ellipsis a')[i].attribs.href
         })
       }
-      console.log(result);
       
       return result
     }  
