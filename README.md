@@ -14,9 +14,7 @@ npm i
 npm start
 
 ```
-![KakaoTalk_20200306_225056710](https://user-images.githubusercontent.com/39295881/76089549-347a0d00-5ffd-11ea-9779-0bb1b786de49.png)
-
-
+![app](https://user-images.githubusercontent.com/39295881/76221695-d0558400-625c-11ea-94a8-24d93752a15c.png)
 
 # source
 

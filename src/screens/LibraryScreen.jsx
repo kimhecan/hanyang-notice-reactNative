@@ -1,9 +1,9 @@
 import React, { useEffect,useState } from 'react';
 import { StyleSheet, Text, View, FlatList,TouchableOpacity } from 'react-native';
-import { Linking } from 'expo';
+import { WebView } from 'react-native-webview';
 import libraryNoticeCrawler from '../../crawler/lib';
 
-function LibraryScreen() {
+function LibraryScreen({navigation}) {
 
   const [data, setData] = useState([])
 
@@ -23,7 +23,7 @@ function LibraryScreen() {
         style={styles.list}
         renderItem={({ item }) => {
           return (
-            <TouchableOpacity  style={styles.listView} onPress={() => Linking.openURL(item.url)}>
+            <TouchableOpacity style={styles.listView} onPress={() => navigation.navigate('libraryWebViewPage',{url: item.url})}>
               <Text style={styles.listText}>{item.title}</Text>
               <Text style={styles.date}>{item.date}</Text>
               <View style={styles.border}></View>
@@ -39,6 +39,14 @@ function LibraryScreen() {
   );
 }
 
+export function libraryWebViewPage({route}) {
+  const { url } = route.params
+  return (
+      <WebView
+      source={{uri: url}}
+      />
+  )
+}
 
 const styles = StyleSheet.create({
   listView: {

@@ -1,9 +1,9 @@
 import React, { useEffect,useState } from 'react';
 import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native';
-import { Linking } from 'expo';
+import { WebView } from 'react-native-webview';
 import hanyangNoticeCrawler from '../../crawler/hanyang';
 
-function HanyangScreen() {
+function HanyangScreen({navigation}) {
 
   const [data, setData] = useState([])
 
@@ -23,7 +23,7 @@ function HanyangScreen() {
         style={styles.list}
         renderItem={({ item }) => {
           return (
-            <TouchableOpacity  style={styles.listView} onPress={() => Linking.openURL(item.url)}>
+            <TouchableOpacity style={styles.listView} onPress={() => navigation.navigate('HanyangWebViewPage',{url: item.url})}>
               <Text style={styles.listText}>{item.title}</Text>
               <View style={styles.elem}>
                 <Text style={styles.class}>{item.class}</Text>
@@ -40,6 +40,15 @@ function HanyangScreen() {
     }
     </View>
   );
+}
+
+export function HanyangWebViewPage({route}) {
+  const { url } = route.params
+  return (
+      <WebView
+      source={{uri: url}}
+      />
+  )
 }
 
 

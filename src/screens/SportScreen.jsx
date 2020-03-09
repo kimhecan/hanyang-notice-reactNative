@@ -1,8 +1,9 @@
 import React, { useEffect,useState } from 'react';
-import { StyleSheet, Text, View, FlatList } from 'react-native';
+import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native';
+import { WebView } from 'react-native-webview';
 import sportNoticeCrawler from '../../crawler/sport';
 
-function SportScreen() {
+function SportScreen({navigation}) {
 
   const [data, setData] = useState([])
 
@@ -22,11 +23,11 @@ function SportScreen() {
         style={styles.list}
         renderItem={({ item }) => {
           return (
-            <View style={styles.listView}>
+            <TouchableOpacity style={styles.listView} onPress={() => navigation.navigate('sportWebViewPage',{url: item.url})}>
               <Text style={styles.listText}>{item.title}</Text>
               <Text style={styles.date}>{item.date}</Text>
               <View style={styles.border}></View>
-            </View>
+            </TouchableOpacity>
           )
         }}
         keyExtractor={(item, index) => index.toString()}
@@ -36,6 +37,15 @@ function SportScreen() {
     }
     </View>
   );
+}
+
+export function sportWebViewPage({route}) {
+  const { url } = route.params
+  return (
+      <WebView
+      source={{uri: url}}
+      />
+  )
 }
 
 

@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, FlatList,TouchableOpacity } from 'react-native'
 import { WebView } from 'react-native-webview';
 import scienceNoticeCrawler from '../../crawler/science';
 
-function ScienceScreen() {
+function ScienceScreen({navigation}) {
 
   const [data, setData] = useState([])
 

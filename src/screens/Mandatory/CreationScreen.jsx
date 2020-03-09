@@ -1,9 +1,9 @@
 import React, { useEffect,useState } from 'react';
 import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native';
-import { Linking } from 'expo';
+import { WebView } from 'react-native-webview';
 import mandatoryNoticeCrawler1 from '../../../crawler/madatory/creation';
 
-function HappyScreen() {
+function HappyScreen({navigation}) {
 
   const [data, setData] = useState([])
 
@@ -23,7 +23,7 @@ function HappyScreen() {
         style={styles.list}
         renderItem={({ item }) => {
           return (
-            <TouchableOpacity  style={styles.listView} onPress={() => Linking.openURL(item.url)}>
+            <TouchableOpacity style={styles.listView} onPress={() => navigation.navigate('creationWebViewPage',{url: item.url})}>
               <Text style={styles.listText}>{item.title}</Text>
               <View style={styles.elem}>
                 <Text style={styles.class}>{item.class}</Text>
@@ -40,6 +40,16 @@ function HappyScreen() {
     }
     </View>
   );
+}
+
+
+export function creationWebViewPage({route}) {
+  const { url } = route.params
+  return (
+      <WebView
+      source={{uri: url}}
+      />
+  )
 }
 
 
