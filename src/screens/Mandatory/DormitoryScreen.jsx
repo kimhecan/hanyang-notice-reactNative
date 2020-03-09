@@ -3,7 +3,7 @@ import { StyleSheet, Text, View,FlatList, TouchableOpacity} from 'react-native';
 
 
 
-function Home({navigation}) {
+function DormitoryScreen({navigation}) {
 
   const data = [
     {key: 'Happy', kr: "행복관"}, {key: 'Creation', kr:"창의인재관"} 
@@ -69,4 +69,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default Home;
+export default DormitoryScreen;

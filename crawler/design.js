@@ -12,10 +12,14 @@ const designNoticeCrawler = async () => {
       const html = response.data;
       const $ = cheerio.load(html);
 
+
+      console.log( $('.c-table_link')[0].attribs.href);
+      
       for(let i=0; i< $('.c-table_link').length; i++) {
         result.push({
           title: $('.c-table_link')[i].children[0].data.trim(),
-          date: $('.c-table_link')[i].parent.next.next.children[0].data
+          date: $('.c-table_link')[i].parent.next.next.children[0].data,
+          url : 'http://idesign.hanyang.ac.kr/boad/bd_boad/' + $('.c-table_link')[i].attribs.href, 
         })
       }
     }
@@ -25,5 +29,4 @@ const designNoticeCrawler = async () => {
     console.error(e);
   }
 }
-
 export default designNoticeCrawler

@@ -12,13 +12,16 @@ const meidaNoticeCrawler = async () => {
   try {
     const response = await axios(url, { responseType: 'arraybuffer'});
     if (response.status === 200) {
-      const strContents = new Buffer(response.data)
+      const strContents = new Buffer.from(response.data);
       const html = iconv.decode(strContents, 'EUC-KR').toString();
       const $ = cheerio.load(html);
-      
-      for(let i=0; i<$('.tabletextlist').length; i++) {
-        if ( i % 4 === 0) result.push({title: $('.tabletextlist')[i].children[0].children[0].data});
-        if ( (i-2) % 4 === 0) result[(i-2)/4].date = $('.tabletextlist')[2].children[0].data;
+
+      for(let i=0; i<$('a .tabletextlist').length; i++) {
+        result.push({
+          title:  $('a .tabletextlist')[i].children[0].children[0].data,
+          date: $('.board_table_subject')[i].next.next.children[0].children[0].data,
+          url:`document.board_view.no.value = ${/\d+/g.exec($('.board_table_subject')[i].children[1].attribs.href)[0]}; document.board_view.action = '/board_read.asp'; document.board_view.submit()`
+        })
       }
       return result;
     }  
@@ -26,5 +29,7 @@ const meidaNoticeCrawler = async () => {
     console.error(e);
   }
 }
+
+
 
 export default meidaNoticeCrawler

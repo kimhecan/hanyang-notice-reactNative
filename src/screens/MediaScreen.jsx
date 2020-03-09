@@ -1,10 +1,13 @@
 import React, { useEffect,useState } from 'react';
-import { StyleSheet, Text, View, FlatList } from 'react-native';
+import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native';
+import { WebView } from 'react-native-webview';
 import meidaNoticeCrawler from '../../crawler/media';
 
-function MediaScreen() {
 
-  const [data, setData] = useState([])
+
+function MediaScreen({navigation}) {
+
+  const [data, setData] = useState([]);
 
   async function fetchData() {
     setData(await meidaNoticeCrawler());
@@ -15,18 +18,18 @@ function MediaScreen() {
   },[]);
 
   return (
-    <View>
+    <View style={styles.container}>
       {data ? 
       <FlatList
         data={data}
         style={styles.list}
         renderItem={({ item }) => {
           return (
-            <View style={styles.listView}>
+            <TouchableOpacity style={styles.listView} onPress={() => navigation.navigate('mediaWebViewPage', {script: item.url})}>
               <Text style={styles.listText}>{item.title}</Text>
               <Text style={styles.date}>{item.date}</Text>
               <View style={styles.border}></View>
-            </View>
+            </TouchableOpacity>
           )
         }}
         keyExtractor={(item, index) => index.toString()}
@@ -37,6 +40,20 @@ function MediaScreen() {
     </View>
   );
 }
+
+
+export function mediaWebViewPage({route}) {
+  const { script } = route.params
+  
+  return (
+      <WebView
+      source={{uri: 'http://ccss.hanyang.ac.kr/board.asp?catalogid=ccss&language=ko&boardcode=com01'}}
+      injectJavaScript={script}
+      />
+  )
+}
+
+
 
 
 const styles = StyleSheet.create({
