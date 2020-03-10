@@ -12,6 +12,7 @@ const libraryNoticeCrawler = async () => {
       data.forEach(v => result.push({
         title: v.title,
         date:  v.dateCreated.substr(0, 10),
+        name: v.bulletinCategory.name,
         url: `https://information.hanyang.ac.kr/#/bbs/notice/${v.id}?offset=0&max=20&bulletinCategoryId=1,4`
       }));
     } 

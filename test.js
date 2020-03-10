@@ -1,44 +1,40 @@
 const cheerio = require('cheerio-without-node-native');
 const axios = require('axios');
 const iconv = require('iconv-lite');
-const FormData = require('form-data');
 const Buffer = require('buffer').Buffer
 
 
 const meidaNoticeCrawler = async () => {
 
-  const uri = "http://ccss.hanyang.ac.kr/board_read.asp";
-  const frm = new FormData();
-  frm.append("catalogid", 'ccss');
-  frm.append("language", 'ko');
-  frm.append("no", '531166');
-  frm.append("boardcode", 'com01');
-  frm.append("go", 'ccss');
-  frm.append("field", '');
-  frm.append("keyword", '');
-  frm.append("page", '1');
+  const url = "http://ccss.hanyang.ac.kr/board.asp?catalogid=ccss&language=ko&boardcode=com01"
+  let result = [];
 
+  const onlyNameA = ({ name }) => name == 'a'
 
   try {
-    axios.post(uri, frm)
-    .then((response) => {
-      if (response.status === 200) {
-        const strContents = new Buffer.from(response.data);
-        const html = iconv.decode(strContents, 'EUC-KR').toString();
-        const $ = cheerio.load(html);
-        console.log($('.textplain'));
-        
-      } 
-    }) 
+    const response = await axios(url, { responseType: 'arraybuffer'});
+    if (response.status === 200) {
+      const strContents = new Buffer.from(response.data);
+      const html = iconv.decode(strContents, 'EUC-KR').toString();
+      const $ = cheerio.load(html);
+
+      for(let i=0; i<$('a .tabletextlist').length; i++) {
+        result.push({
+          title:  $('a .tabletextlist')[i].children[0].children[0].data,
+          date: $('.board_table_subject')[i].next.next.children[0].children[0].data,
+          url:`document.board_view.no.value = ${/\d+$/g.exec($('.board_table_subject')[0].children.filter(onlyNameA)[0].attribs.href)[0]}; document.board_view.action = '/board_read.asp'; document.board_view.submit()`
+        })
+      }
+   
+      console.log(result);
+      
+      return result;
+    }  
   } catch (e) {
     console.error(e);
   }
 }
-meidaNoticeCrawler()
 
 
-function view(n) {
-	document.board_view.no.value = n;
-	document.board_view.action = "/board_read.asp";
-	document.board_view.submit();
-}
+
+export default meidaNoticeCrawler

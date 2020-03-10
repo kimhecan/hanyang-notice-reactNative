@@ -19,6 +19,7 @@ const engineerNoticeCrawler = async () => {
         result.push({
           title: $('.subject')[i].children.filter(onlyTypeText)[$('.subject')[i].children.filter(onlyTypeText).length - 1].data.trim(),
           date: $('.datetime')[i].children[0].data,
+          class: $('.no')[i].children[0].data.trim() ? $('.no')[i].children[0].data.trim() : '공지',
           url: url2 + $('.subject')[i].parent.attribs.href
         });
       }

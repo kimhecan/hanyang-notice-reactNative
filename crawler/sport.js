@@ -10,20 +10,21 @@ const sportNoticeCrawler = async () => {
     const response = await axios(url);
     if (response.status === 200) {
       const html = response.data;
-      const $ = cheerio.load(html);
+      const $ = cheerio.load(html);      
     
       for(let i=0; i<$('.cut_strings').length; i++) {
         result.push({
           title: $('.cut_strings')[i].children[1].children[0].data.trim(),
           date: $('.kboard-list-date')[i+1].children[0].data,
+          class: $('.kboard-list-uid')[i+1].children[0].data,
           url: 'http://sportsnarts.hanyang.ac.kr' + $('.cut_strings')[i].children[1].attribs.href
         })
       }
+
       return result;
     }
   } catch (e) {
     console.error(e);
   }
 }
-
-export default sportNoticeCrawler;
+export default sportNoticeCrawler

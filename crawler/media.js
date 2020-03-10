@@ -9,6 +9,8 @@ const meidaNoticeCrawler = async () => {
   const url = "http://ccss.hanyang.ac.kr/board.asp?catalogid=ccss&language=ko&boardcode=com01"
   let result = [];
 
+  const onlyNameA = ({ name }) => name == 'a'
+
   try {
     const response = await axios(url, { responseType: 'arraybuffer'});
     if (response.status === 200) {
@@ -20,9 +22,10 @@ const meidaNoticeCrawler = async () => {
         result.push({
           title:  $('a .tabletextlist')[i].children[0].children[0].data,
           date: $('.board_table_subject')[i].next.next.children[0].children[0].data,
-          url:`document.board_view.no.value = ${/\d+/g.exec($('.board_table_subject')[i].children[1].attribs.href)[0]}; document.board_view.action = '/board_read.asp'; document.board_view.submit()`
+          url:`document.board_view.no.value = ${/\d+$/g.exec($('.board_table_subject')[0].children.filter(onlyNameA)[0].attribs.href)[0]}; document.board_view.action = '/board_read.asp'; document.board_view.submit()`
         })
       }
+      
       return result;
     }  
   } catch (e) {

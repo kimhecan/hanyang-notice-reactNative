@@ -16,9 +16,11 @@ const economicNoticeCrawler = async () => {
       const $ = cheerio.load(html);
 
       for(let i=0; i<$('.is-notice').length; i++) {
+
         result.push({
           title: $('.text-left')[i].children[1].children[0].data.trim(),
           date: $('.text-left')[i].next.next.children[0].data,
+          class: $('.text-left')[i].prev.prev.children[0].data ? $('.text-left')[i].prev.prev.children[0].data : '공지',
           url: 'https://ibus.hanyang.ac.kr' + $('.text-left')[i].children[1].attribs.href
         })
       }
@@ -27,6 +29,7 @@ const economicNoticeCrawler = async () => {
         result.push({
           title: $('.text-left')[i].children[1].children[2].data.trim(),
           date: $('.text-left')[i].next.next.children[0].data,
+          class: $('.text-left')[i].prev.prev.children[0].data ? $('.text-left')[i].prev.prev.children[0].data : '공지',
           url: 'https://ibus.hanyang.ac.kr' + $('.text-left')[i].children[1].attribs.href,
         })
       }

@@ -25,7 +25,10 @@ function LibraryScreen({navigation}) {
           return (
             <TouchableOpacity style={styles.listView} onPress={() => navigation.navigate('libraryWebViewPage',{url: item.url})}>
               <Text style={styles.listText}>{item.title}</Text>
-              <Text style={styles.date}>{item.date}</Text>
+              <View style={styles.elem}>
+                <Text style={styles.class}>{item.name}</Text>
+                <Text style={styles.date}>{item.date}</Text>
+              </View>
               <View style={styles.border}></View>
             </TouchableOpacity>
           )
@@ -60,9 +63,16 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
 
   },
+  elem: {
+    flex: 1,
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+  },  
+  class: {
+    color: 'gray',
+  },
   date: {
     color: 'gray',
-    textAlign: 'right',
   },
   border: {
     backgroundColor: '#CECFD1',

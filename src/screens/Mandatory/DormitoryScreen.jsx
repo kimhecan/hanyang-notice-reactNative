@@ -22,7 +22,7 @@ function DormitoryScreen({navigation}) {
   };
 
   return (
-    <View>
+    <View style={styles.container}>
         <FlatList
           data={data}
           style={styles.list}
@@ -35,7 +35,12 @@ function DormitoryScreen({navigation}) {
 }
 
 
+
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: 'white',
+    height: 600
+  },
   list: {
     marginVertical: 20,
     marginHorizontal: 10
@@ -44,27 +49,30 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: 'center',
-    margin: 20,
+    margin: 18,
     marginBottom: 40,
     height: 170,
     width: 140,
-    borderRadius: 5,
-    shadowOffset:{  width: 10,  height: 10},
-    shadowColor: 'gray',
-    shadowOpacity: 0.1,
+    // borderRadius: 5,
+    shadowOffset:{  width: 10,  height: 15},
+    shadowColor: '#D5D5D5',
+    shadowOpacity: 0.3,
+    shadowRadius: 5,
+    elevation: 1,
   },
   item: {
-    color: '#3C72E0',
-    fontSize: 21,
+    color: '#002D93',
+    fontSize: 17,
     fontWeight: 'bold',
-    textAlign: 'center'
+    textAlign: 'center',
+    marginTop: 5
   },
   item2: {
-    color: '#3C72E0',
+    color: '#002D93',
     fontSize: 15,
     fontWeight: 'normal',
     textAlign: 'center',
-    marginTop: 10
+    marginTop: 8
   }
 });
 

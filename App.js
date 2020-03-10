@@ -31,6 +31,7 @@ export default function App() {
     title: 'HANYANG UNIVERSITY NOTICE',
     headerStyle: {
       backgroundColor: '#0D3FA5',
+      
     },
     headerTintColor: 'white',
     headerTitleStyle: {
@@ -51,32 +52,32 @@ export default function App() {
     <NavigationContainer initialRouteName="Home">
       <Stack.Navigator>
         <Stack.Screen name="Home" component={HomeScreen} options={headerStyle}/>
-        <Stack.Screen name="Campus" component={HanyangScreen} options={headerStyle2}/>
+        <Stack.Screen name="캠퍼스" component={HanyangScreen} options={headerStyle2}/>
           <Stack.Screen name="HanyangWebViewPage" component={HanyangWebViewPage} options={headerStyle2}/>
-        <Stack.Screen name="Library" component={LibraryScreen} options={headerStyle2}/>
+        <Stack.Screen name="학술정보관" component={LibraryScreen} options={headerStyle2}/>
           <Stack.Screen name="libraryWebViewPage" component={libraryWebViewPage} options={headerStyle2}/>
-        <Stack.Screen name="Dormitory" component={DormitoryScreen} options={headerStyle2}/>
+        <Stack.Screen name="기숙사" component={DormitoryScreen} options={headerStyle2}/>
             <Stack.Screen name="Happy" component={HappyScreen} options={headerStyle2}/>
               <Stack.Screen name="happyWebViewPage" component={happyWebViewPage} options={headerStyle2}/>
             <Stack.Screen name="Creation" component={CreationScreen} options={headerStyle2}/>
               <Stack.Screen name="creationWebViewPage" component={creationWebViewPage} options={headerStyle2}/>
-        <Stack.Screen name="Computing" component={SoftwareScreen} options={headerStyle2}/>
+        <Stack.Screen name="소프트웨어융합대학" component={SoftwareScreen} options={headerStyle2}/>
           <Stack.Screen name="softwareWebViewPage" component={softwareWebViewPage} options={headerStyle2}/>
-        <Stack.Screen name="Pharmacy" component={PharmacyScreen} options={headerStyle2}/>
+        <Stack.Screen name="약학대학" component={PharmacyScreen} options={headerStyle2}/>
           <Stack.Screen name="pharmacyWebViewPage" component={pharmacyWebViewPage} options={headerStyle2}/>
-        <Stack.Screen name="Engineering Sciences" component={EngineerScreen} options={headerStyle2}/>
+        <Stack.Screen name="공과대학" component={EngineerScreen} options={headerStyle2}/>
           <Stack.Screen name="engineerWebViewPage" component={engineerWebViewPage} options={headerStyle2}/>
-        <Stack.Screen name="Languages & Cultures" component={CultureScreen} options={headerStyle2}/>
+        <Stack.Screen name="국제문화대학" component={CultureScreen} options={headerStyle2}/>
           <Stack.Screen name="cultureWebViewPage" component={cultureWebViewPage} options={headerStyle2}/>
-        <Stack.Screen name="Communication" component={MediaScreen} options={headerStyle2}/>
+        <Stack.Screen name="언론정보대학" component={MediaScreen} options={headerStyle2}/>
           <Stack.Screen name="mediaWebViewPage" component={mediaWebViewPage} options={headerStyle2}/>
-        <Stack.Screen name="Business And Economics" component={EconomicScreen} options={headerStyle2}/>
+        <Stack.Screen name="경상대학" component={EconomicScreen} options={headerStyle2}/>
           <Stack.Screen name="ecomomicWebViewPage" component={ecomomicWebViewPage} options={headerStyle2}/>
-        <Stack.Screen name="Science & Convergence Technology" component={ScienceScreen} options={headerStyle2}/>
+        <Stack.Screen name="과학기술융합대학" component={ScienceScreen} options={headerStyle2}/>
           <Stack.Screen name="scienceWebViewPage" component={scienceWebViewPage} options={headerStyle2}/>
-        <Stack.Screen name="Design" component={DesignScreen} options={headerStyle2}/>
+        <Stack.Screen name="디자인대학" component={DesignScreen} options={headerStyle2}/>
           <Stack.Screen name="designWebViewPage" component={designWebViewPage} options={headerStyle2}/>
-        <Stack.Screen name="Sports And Arts" component={SportScreen} options={headerStyle2}/>
+        <Stack.Screen name="예체능대학" component={SportScreen} options={headerStyle2}/>
           <Stack.Screen name="sportWebViewPage" component={sportWebViewPage} options={headerStyle2}/>
 
       </Stack.Navigator>

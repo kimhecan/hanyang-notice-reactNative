@@ -14,13 +14,11 @@ const softwareNoticeCrawler = async () => {
       const html = response.data;
       const $ = cheerio.load(html);
 
-      console.log($('.left')[0].children[1].attribs.href);
-      
-
       for(let i=0; i<$('.left').length; i++) {
         result.push({
           'title': $('.left')[i].children[1].children[0].data,
           'date': $('.left')[i].next.next.children[0].data,
+          'class': $('.left')[i].prev.prev.children[0].data ? $('.left')[i].prev.prev.children[0].data : "공지",
           'url': url2 + $('.left')[i].children[1].attribs.href,
         })
       }
@@ -33,3 +31,4 @@ const softwareNoticeCrawler = async () => {
 }
 
 export default softwareNoticeCrawler
+

@@ -14,12 +14,22 @@ const mandatoryNoticeCrawler2 = async () => {
       const $ = cheerio.load(html);
 
       for(let i=0; i<$('.subj_bold').length; i++) {
-
-        result.push({
-          title: $('.subj_bold')[i].children[0].children[0].data,
-          date: $('.subj_bold')[i].next.next.next.children[0].data,
-          url: url2 + /\d+/g.exec($('.subj_bold')[i].children[0].attribs.onclick)[0]
-        })
+        
+        if( i<$('.notice .notice').length) {
+          result.push({
+            title: $('.subj_bold')[i].children[0].children[0].data,
+            date: $('.subj_bold')[i].next.next.next.children[0].data,
+            class: $('.subj_bold')[i].prev.children[0].children[0].data,
+            url: url2 + /\d+/g.exec($('.subj_bold')[i].children[0].attribs.onclick)[0]
+          })
+        } else {
+          result.push({
+            title: $('.subj_bold')[i].children[0].children[0].data,
+            date: $('.subj_bold')[i].next.next.next.children[0].data,
+            class: $('.subj_bold')[i].prev.children[0].data.trim(),
+            url: url2 + /\d+/g.exec($('.subj_bold')[i].children[0].attribs.onclick)[0]
+          })
+        }
       }    
       return result;
     }
