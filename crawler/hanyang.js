@@ -16,8 +16,8 @@ const hanyangNoticeCrawler = async () => {
 
       for(let i=0; i< $('.title').length; i++) {
         result.push({
-          class: $('.title')[i].children[1].children[0].data,
           title: $('.title')[i].children[3].children[0].data,
+          class: $('.title')[i].children[1].children[0].data,
           date: $('.date')[i].children[0].data.trim(),
           url: url2 + /\d+/g.exec($('.title')[i].children[3].attribs.href)[0]
         })

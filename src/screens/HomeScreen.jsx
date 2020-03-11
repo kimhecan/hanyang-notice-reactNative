@@ -60,20 +60,20 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: 'center',
-    margin: 18,
+    margin: 15,
     marginBottom: 40,
     height: 170,
     width: 140,
-    // borderRadius: 5,
+    
     shadowOffset:{  width: 10,  height: 15},
     shadowColor: '#D5D5D5',
     shadowOpacity: 0.3,
     shadowRadius: 5,
-    elevation: 1,
+    elevation: 7
   },
   item: {
     color: '#002D93',
-    fontSize: 17,
+    fontSize: 16,
     fontWeight: 'bold',
     textAlign: 'center',
     marginTop: 5
