@@ -19,10 +19,12 @@ const meidaNoticeCrawler = async () => {
       const $ = cheerio.load(html);
 
       for(let i=0; i<$('a .tabletextlist').length; i++) {
+        console.log(i);
+        
         result.push({
           title:  $('a .tabletextlist')[i].children[0].children[0].data,
           date: $('.board_table_subject')[i].next.next.children[0].children[0].data,
-          url:`document.board_view.no.value = ${/\d+$/g.exec($('.board_table_subject')[0].children.filter(onlyNameA)[0].attribs.href)[0]}; document.board_view.action = '/board_read.asp'; document.board_view.submit()`
+          url:`document.board_view.no.value = ${/\d+$/g.exec($('.board_table_subject')[0].children.filter(onlyNameA)[0].attribs.href)}; document.board_view.action = '/board_read.asp'; document.board_view.submit()`
         })
       }
       
@@ -32,7 +34,6 @@ const meidaNoticeCrawler = async () => {
     console.error(e);
   }
 }
-
 
 
 export default meidaNoticeCrawler

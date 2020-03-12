@@ -1,7 +1,8 @@
 import React, { useEffect,useState } from 'react';
-import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native';
+import { Text, View, FlatList, TouchableOpacity } from 'react-native';
 import { WebView } from 'react-native-webview';
 import designNoticeCrawler from '../../crawler/design';
+import { flatlistCss } from '../css/screens'
 
 function DesignScreen({navigation}) {
 
@@ -20,16 +21,16 @@ function DesignScreen({navigation}) {
       {data ? 
       <FlatList
         data={data}
-        style={styles.list}
+        style={flatlistCss.list}
         renderItem={({ item }) => {
           return (
-            <TouchableOpacity style={styles.listView} onPress={() => navigation.navigate('designWebViewPage',{url: item.url})}>
-              <Text style={styles.listText}>{item.title}</Text>
-              <View style={styles.elem}>
-                <Text style={styles.class}>{item.class}</Text>
-                <Text style={styles.date}>{item.date}</Text>
+            <TouchableOpacity style={flatlistCss.listView} onPress={() => navigation.navigate('디자인대학 웹 사이트',{url: item.url})}>
+              <Text style={flatlistCss.listText}>{item.title}</Text>
+              <View style={flatlistCss.elem}>
+                <Text style={flatlistCss.class}>{item.class}</Text>
+                <Text style={flatlistCss.date}>{item.date}</Text>
               </View>
-              <View style={styles.border}></View>
+              <View style={flatlistCss.border}></View>
             </TouchableOpacity>
           )
         }}
@@ -50,37 +51,5 @@ export function designWebViewPage({route}) {
       />
   )
 }
-
-const styles = StyleSheet.create({
-  listView: {
-    margin: 30,
-  
-  },
-  listText: {
-    fontSize: 18,
-    marginBottom: 20,
-    color: '#0E354B',
-    fontWeight: 'bold'
-
-  },
-  elem: {
-    flex: 1,
-    justifyContent: 'space-between',
-    flexDirection: 'row',
-  },  
-  class: {
-    color: 'gray',
-  },
-  date: {
-    color: 'gray',
-  },
-  border: {
-    backgroundColor: '#CECFD1',
-    width: '100%',
-    height: 0.5,
-    marginTop: 20
-  }
-});
-
 
 export default DesignScreen

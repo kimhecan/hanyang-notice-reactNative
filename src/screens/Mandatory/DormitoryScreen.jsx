@@ -1,31 +1,33 @@
 import React from 'react';
-import { StyleSheet, Text, View,FlatList, TouchableOpacity} from 'react-native';
-
+import {Text, View,FlatList, TouchableOpacity, Image} from 'react-native';
+import { HomeCss } from '../../css/screens'
 
 
 function DormitoryScreen({navigation}) {
 
   const data = [
-    {key: 'Happy', kr: "행복관"}, {key: 'Creation', kr:"창의인재관"} 
+    {key: 'Happy', kr: "행복관", src: "https://user-images.githubusercontent.com/39295881/76518415-69291100-64a2-11ea-9b0c-3304f6dedc02.png"}, 
+    {key: 'Creation', kr:"창의관", src: "https://user-images.githubusercontent.com/39295881/76518173-ff106c00-64a1-11ea-993e-dffd141798b4.png"} 
   ]
 
 
   const renderItem = ({item}) => {
     return (
       <View>
-        <TouchableOpacity style={styles.itemButton} onPress={() => navigation.push(item.key)}>
-          <Text style={styles.item}>{item.kr}</Text>
-          <Text style={styles.item2}>{item.key}</Text>
+        <TouchableOpacity style={HomeCss.itemButton} onPress={() => navigation.push(item.kr)}>
+          <Image style={HomeCss.image} source={{uri: item.src}} />
+          <Text style={HomeCss.item}>{item.kr}</Text>
+          <Text style={HomeCss.item2}>{item.key}</Text>
         </TouchableOpacity>
       </View>
     );
   };
 
   return (
-    <View style={styles.container}>
+    <View style={HomeCss.container2}>
         <FlatList
           data={data}
-          style={styles.list}
+          style={HomeCss.list}
           renderItem={renderItem}
           numColumns={2}
           keyExtractor={(item, index) => index.toString()}
@@ -33,48 +35,6 @@ function DormitoryScreen({navigation}) {
     </View>
   );
 }
-
-
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: 'white',
-    height: 600
-  },
-  list: {
-    marginVertical: 20,
-    marginHorizontal: 10
-  },
-  itemButton: {
-    backgroundColor: 'white',
-    alignItems: 'center',
-    justifyContent: 'center',
-    margin: 18,
-    marginBottom: 40,
-    height: 170,
-    width: 140,
-    // borderRadius: 5,
-    shadowOffset:{  width: 10,  height: 15},
-    shadowColor: '#D5D5D5',
-    shadowOpacity: 0.3,
-    shadowRadius: 5,
-    elevation: 1,
-  },
-  item: {
-    color: '#002D93',
-    fontSize: 17,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    marginTop: 5
-  },
-  item2: {
-    color: '#002D93',
-    fontSize: 15,
-    fontWeight: 'normal',
-    textAlign: 'center',
-    marginTop: 8
-  }
-});
 
 
 export default DormitoryScreen;

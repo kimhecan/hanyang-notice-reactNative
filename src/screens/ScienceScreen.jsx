@@ -1,7 +1,8 @@
 import React, { useEffect,useState } from 'react';
-import { StyleSheet, Text, View, FlatList,TouchableOpacity } from 'react-native';
+import { Text, View, FlatList,TouchableOpacity } from 'react-native';
 import { WebView } from 'react-native-webview';
 import scienceNoticeCrawler from '../../crawler/science';
+import { flatlistCss } from '../css/screens'
 
 function ScienceScreen({navigation}) {
 
@@ -20,13 +21,13 @@ function ScienceScreen({navigation}) {
       {data ? 
       <FlatList
         data={data}
-        style={styles.list}
+        style={flatlistCss.list}
         renderItem={({ item }) => {
           return (
-            <TouchableOpacity style={styles.listView} onPress={() => navigation.navigate('scienceWebViewPage',{url: item.url})}>
-              <Text style={styles.listText}>{item.title}</Text>
-              <Text style={styles.date}>{item.date}</Text>
-              <View style={styles.border}></View>
+            <TouchableOpacity style={flatlistCss.listView} onPress={() => navigation.navigate('과학기술융합대학 웹 사이트',{url: item.url})}>
+              <Text style={flatlistCss.listText}>{item.title}</Text>
+              <Text style={flatlistCss.date}>{item.date}</Text>
+              <View style={flatlistCss.border}></View>
             </TouchableOpacity>
           )
         }}
@@ -47,30 +48,5 @@ export function scienceWebViewPage({route}) {
       />
   )
 }
-
-const styles = StyleSheet.create({
-  listView: {
-    margin: 30,
-  
-  },
-  listText: {
-    fontSize: 18,
-    marginBottom: 20,
-    color: '#0E354B',
-    fontWeight: 'bold'
-
-  },
-  date: {
-    color: 'gray',
-    textAlign: 'right',
-  },
-  border: {
-    backgroundColor: '#CECFD1',
-    width: '100%',
-    height: 0.5,
-    marginTop: 20
-  }
-});
-
 
 export default ScienceScreen

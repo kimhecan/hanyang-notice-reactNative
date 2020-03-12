@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View,FlatList, TouchableOpacity, Image} from 'react-native';
+import { Text, View,FlatList, TouchableOpacity, Image} from 'react-native';
+import { HomeCss } from '../css/screens'
 
 global.Buffer = global.Buffer || require('buffer').Buffer
 
@@ -24,21 +25,21 @@ function Home({navigation}) {
 
   const renderItem = ({item}) => {
     return (
-      <View style={styles.container}>
-        <TouchableOpacity style={styles.itemButton} onPress={() => navigation.push(item.kr)}>
-          <Image style={{width: 50, height: 50, tintColor: '#002D93'}} source={{uri: item.src}} />
-          <Text style={styles.item}>{item.kr}</Text>
-          <Text style={styles.item2}>{item.key}</Text>
+      <View style={HomeCss.container}>
+        <TouchableOpacity style={HomeCss.itemButton} onPress={() => navigation.push(item.kr)}>
+          <Image style={HomeCss.image} source={{uri: item.src}} />
+          <Text style={HomeCss.item}>{item.kr}</Text>
+          <Text style={HomeCss.item2}>{item.key}</Text>
         </TouchableOpacity>
       </View>
     );
   };
 
   return (
-    <View style={styles.container}>
+    <View style={HomeCss.container}>
         <FlatList
           data={data}
-          style={styles.list}
+          style={HomeCss.list}
           renderItem={renderItem}
           numColumns={2}
           keyExtractor={(item, index) => index.toString()}
@@ -46,46 +47,6 @@ function Home({navigation}) {
     </View>
   );
 }
-
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: 'white'
-  },
-  list: {
-    marginVertical: 20,
-    marginHorizontal: 10
-  },
-  itemButton: {
-    backgroundColor: 'white',
-    alignItems: 'center',
-    justifyContent: 'center',
-    margin: 15,
-    marginBottom: 40,
-    height: 170,
-    width: 140,
-    
-    shadowOffset:{  width: 10,  height: 15},
-    shadowColor: '#D5D5D5',
-    shadowOpacity: 0.3,
-    shadowRadius: 5,
-    elevation: 7
-  },
-  item: {
-    color: '#002D93',
-    fontSize: 16,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    marginTop: 5
-  },
-  item2: {
-    color: '#002D93',
-    fontSize: 15,
-    fontWeight: 'normal',
-    textAlign: 'center',
-    marginTop: 8
-  }
-});
 
 
 export default Home;
